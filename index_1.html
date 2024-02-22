@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anime4K.js Image Upscaling</title>
+    <script src="anime4k.js"></script>
+</head>
+<body>
+    <h2>Original Image</h2>
+    <img id="originalImage" src="input.jpg" alt="Original Image" width="400">
+    <h2>Upscaled Image</h2>
+    <canvas id="upscaledCanvas"></canvas>
+
+    <script>
+        window.onload = function() {
+            // Get the image source and canvas elements
+            var originalImage = document.getElementById('originalImage');
+            var canvasElement = document.getElementById('upscaledCanvas');
+            var textureSource = originalImage;
+
+            // Create an instance of Anime4KJS.ImageUpscaler
+            const upscaler = new Anime4KJS.ImageUpscaler(Anime4KJS.ANIME4KJS_SIMPLE_M_2X  /* PROFILE */);
+
+            // Attach the original image and canvas element to the upscaler
+            upscaler.attachSource(textureSource, canvasElement);
+
+            // Perform the upscaling process
+            upscaler.upscale();
+        };
+    </script>
+</body>
+</html>
